@@ -8,7 +8,22 @@ const passport = require('passport');
 require('./config/passport');
 
 const app = express();
-app.use(cors());
+
+// ✅ Secure CORS setup
+const allowedOrigins = ['https://a-i-kappa.vercel.app', 'http://localhost:3000'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // Allow curl/postman
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('❌ Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
+
 app.use(express.json());
 app.use(passport.initialize());
 
