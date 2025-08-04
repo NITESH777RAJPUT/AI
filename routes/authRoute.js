@@ -51,7 +51,7 @@ router.get('/google/callback',
   (req, res) => {
     const token = jwt.sign({ id: req.user._id }, JWT_SECRET, { expiresIn: '7d' });
     // ✅ Redirect to correct frontend path
-    res.redirect(`http://localhost:5173/auth-redirect?token=${token}`);
+    res.redirect(`https://a-i-kappa.vercel.app/auth-redirect?token=${token}`);
   }
 );
 
