@@ -5,7 +5,9 @@ const History = require('../models/History');
 // Get all chat sessions for the authenticated user
 router.get('/', async (req, res) => {
   try {
+    // Only return the session ID and creation date for the sidebar list
     const histories = await History.find({ userId: req.user.userId })
+      .select('sessionId createdAt')
       .sort({ createdAt: -1 })
       .limit(50); // Limit to recent 50 sessions
     res.json(histories);
