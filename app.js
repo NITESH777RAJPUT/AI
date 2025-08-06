@@ -10,7 +10,7 @@ require('./config/passport');
 const app = express();
 
 // ✅ Secure CORS setup
-const allowedOrigins = ['https://ai-ja3l.onrender.com', 'http://localhost:3000'];
+const allowedOrigins = ['https://a-i-mki5.vercel.app', 'http://localhost:3000'];
 
 app.use(cors({
   origin: function (origin, callback) {
